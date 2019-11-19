@@ -1,4 +1,10 @@
+import java.io.File;
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
 public class CreditCard
+
 	{
 		static long validCard = (long) 5424180123456789.;
 		static long invalidCard = (long) 542418012345685.;
@@ -8,11 +14,14 @@ public class CreditCard
 		static long card = validCard;
 		static long inCard = invalidCard;
 		
-		public static void main(String[] args)
+		public static void main(String[] args) throws IOException
 			{
+				Scanner file = new Scanner(new File("CreditCardNumbers"));
+
 				strippingNumbers();
 				doublingNumbers();
 				originalDoubled();
+				creditNumber = file.hasNextLong();
 			}
 
 		private static void strippingNumbers()
@@ -61,6 +70,11 @@ public class CreditCard
 					{
 						System.out.println("Your card is not valid. Good-bye.");
 					}
+			}
+		
+		private static void readingCard()
+			{
+				
 			}
 
 	}
