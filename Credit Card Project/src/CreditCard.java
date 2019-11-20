@@ -1,35 +1,41 @@
 import java.io.File;
-import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class CreditCard
 
 	{
+		static long cardNumber;
 		static long validCard = (long) 5424180123456789.;
 		static long invalidCard = (long) 542418012345685.;
 		
 		static long[] creditCardNumbers = new long[16];
 		
-		static long card = validCard;
-		static long inCard = invalidCard;
+		static long card = cardNumber;
+		static long inCard = cardNumber;
 		
 		public static void main(String[] args) throws IOException
 			{
 				Scanner file = new Scanner(new File("CreditCardNumbers"));
 
+			 while(file.hasNext())
+			  {
+				cardNumber = file.nextLong();
 				strippingNumbers();
 				doublingNumbers();
 				originalDoubled();
-				creditNumber = file.hasNextLong();
+				
+			  }
+			 
+				
 			}
 
 		private static void strippingNumbers()
 			{			
 					for (int c = creditCardNumbers.length - 1; c >= 0; c--)
 						{
-							long endingDigit = card % 10;	
-							card /= 10;
+							long endingDigit = cardNumber % 10;	
+							cardNumber /= 10;
 							
 							creditCardNumbers[c] = endingDigit;
 
@@ -45,7 +51,7 @@ public class CreditCard
 						
 						if(creditCardNumbers[dc] >= 10)
 							{
-								long newDigg = (creditCardNumbers[dc] % 10) + (creditCardNumbers[dc] / 10);
+								long newDigg = (creditCardNumbers[dc] / 10) + (creditCardNumbers[dc] % 10);
 								creditCardNumbers[dc] = newDigg;
 							}
 
@@ -68,13 +74,8 @@ public class CreditCard
 					}
 				else
 					{
-						System.out.println("Your card is not valid. Good-bye.");
+						System.out.println("Your card is invalid. Good-bye.");
 					}
-			}
-		
-		private static void readingCard()
-			{
-				
 			}
 
 	}
